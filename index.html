@@ -1,0 +1,89 @@
+<DOCTYPE! html>
+<html>
+    <head>
+        <title>罗仔的情人节小礼物</title>
+        <style>
+            #countup p {
+                display: inline-block;
+                padding: 5px;
+                margin: 0 0 20px;
+            }
+            
+            #center {
+                position:absolute;
+                display:block;
+                margin:auto;
+                top:0px;
+                bottom: 0px;
+                left: 0px;
+                right:0px;
+                width:500px;
+                height:200px;
+            }
+            
+            #pig {
+                height:30vh;
+                position: absolute;
+                margin:auto;
+                top:100px;
+                bottom: 0px;
+                left: 0px;
+                right:0px;
+            }
+            #bg {
+                background-color: blanchedalmond;
+            }
+            
+        </style>
+    </head> 
+    <body id='bg'>
+        <div id="center">
+            <div id="countup">
+                我们在一起
+                <p id="years">00</p>
+                <p class="timeRefYears">年</p>
+                <p id="days">00</p>
+                <p class="timeRefDays">天</p>
+                <p id="hours">00</p>
+                <p class="timeRefHours">小时</p>
+                <p id="minutes">00</p>
+                <p class="timeRefMinutes">分钟</p>
+                <p id="seconds">00</p>
+                <p class="timeRefSeconds">秒</p>
+                了哦~
+            </div>
+           
+        </div>
+        <div>
+            <img id="pig"src="piglet.png"/>
+        </div>
+        
+        
+        <script>
+            window.onload=function() {
+                // Month,Day,Year,Hour,Minute,Second
+                upTime('aug,06,2013,12:00:00'); // ****** Change this line!
+            };
+            function upTime(countTo) {
+            now = new Date();
+            countTo = new Date(countTo);
+            difference = (now-countTo);
+            days=Math.floor(difference/(60*60*1000*24)*1);
+            years = Math.floor(days / 365);
+            if (years > 1){ days = days - (years * 365)}
+            hours=Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
+            mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+            secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+            document.getElementById('years').firstChild.nodeValue = years;
+            document.getElementById('days').firstChild.nodeValue = days;
+            document.getElementById('hours').firstChild.nodeValue = hours;
+            document.getElementById('minutes').firstChild.nodeValue = mins;
+            document.getElementById('seconds').firstChild.nodeValue = secs;
+
+            clearTimeout(upTime.to);
+            upTime.to=setTimeout(function(){ upTime(countTo); },1000);
+            }
+        </script>
+    </body>
+    
+</html>
