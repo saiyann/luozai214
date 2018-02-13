@@ -35,7 +35,7 @@
             }
             #hello {
                 position: absolute;
-                width: 200px;
+                width: 170px;
                 height: 100px;
                 margin: auto;
                 left:0px;
@@ -94,6 +94,10 @@
             clearTimeout(upTime.to);
             upTime.to=setTimeout(function(){ upTime(countTo); },1000);
             }
+            
+            document.getElementById("pig").addEventListener("click", function(){
+                document.getElementById("hello").innerHTML = "我爱你哦"
+            })
         </script>
     </body>
     
